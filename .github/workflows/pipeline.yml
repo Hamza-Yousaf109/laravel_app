@@ -31,7 +31,8 @@ jobs:
             cd /var/www/laravel_app
 
             echo "Installing PHP dependencies..."
-            sudo composer install --no-interaction --prefer-dist --optimize-autoloader
+            composer update
+            composer install 
 
             echo "Setting correct permissions..."
             sudo chown -R www-data:www-data .
