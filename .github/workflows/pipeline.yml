@@ -34,9 +34,7 @@ jobs:
             composer update
             composer install 
 
-            echo "Setting correct permissions..."
-            sudo chown -R www-data:www-data .
-            sudo chmod -R 755 .
+            
 
             echo "Copying .env if not exists..."
             sudo cp .env.example .env || true
@@ -53,5 +51,9 @@ jobs:
             sudo php artisan route:cache
             sudo php artisan view:cache
 
+            echo "Setting correct permissions..."
+            sudo chown -R www-data:www-data .
+            sudo chmod -R 755 .
+
             echo "Restarting PHP-FPM..."
-            sudo systemctl restart php8.2-fpm || sudo systemctl restart php8.1-fpm || true
+            sudo systemctl restart php8.4-fpm 
